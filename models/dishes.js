@@ -16,12 +16,12 @@ const commentSchema = new Schema({
         type: String,
         required: true
     },
-    author:{
-        type: String,
-        required: true
+    author: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User'
 
     }
-},{
+}, {
     timestamps: true
 
 });
@@ -40,21 +40,21 @@ const dishSchema = new Schema({
         type: String,
         required: true
     },
-    label:{
+    label: {
         type: String,
-        default : ''
+        default: ''
     },
-    price:{
+    price: {
         type: Currency,
-        required : true,
+        required: true,
         min: 0
     },
     featured: {
         type: Boolean,
         default: false
-        
+
     },
-    comments:[commentSchema]
+    comments: [commentSchema]
 }, {
     timestamps: true
 
